@@ -1,4 +1,4 @@
-FROM wordpress:4-fpm
+FROM wordpress:4
 
 # memcache & redis
 RUN yes | pecl install redis memcache-3.0.8 \
@@ -9,4 +9,4 @@ RUN docker-php-ext-install mysql
 
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["php-fpm"]
+CMD ["apache2-foreground"]
